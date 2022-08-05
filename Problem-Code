@@ -1,0 +1,52 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while(T-->0)
+        {
+            String s = br.readLine().trim();
+            String[] s1 = s.split(" ");
+            int A = Integer.parseInt(s1[0]);
+            int B = Integer.parseInt(s1[1]);
+            Solution ob = new Solution();
+            int ans = ob.SumofDigits(A, B);
+            System.out.println(ans);           
+        }
+    }
+}
+
+// } Driver Code Ends
+class Solution
+{
+    public static int SumofDigits(int A, int B)
+    {
+    	long x = power(A, B);
+		if(x == 0)
+			return 9;
+		return (int)x;
+	}
+	public static long power(int x, int y)
+	{
+	   long res = 1;      // Initialize result
+	    x = x % 9;  // Update x if it is more than or
+	                // equal to p
+	    while (y > 0)
+	    {
+	        // If y is odd, multiply x with result
+	        if ((y&1)==1)
+	            res = (res*x) % 9;
+	        // y must be even now
+	        y = y>>1; // y = y/2
+	        x = (x*x) % 9;
+	    }
+	    return res;
+	}
+}
